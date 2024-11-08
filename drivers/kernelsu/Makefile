@@ -24,7 +24,7 @@ KSU_GIT_VERSION := $(shell curl -sI "https://api.github.com/repos/$(REPO_OWNER)/
 
 ifeq ($(KSU_GIT_VERSION),)
   $(warning "Failed to fetch commit count from GitHub API! Using default version.")
-  KSU_VERSION := 16
+  KSU_VERSION := 11966
 else
   $(eval KSU_VERSION=$(shell expr 10000 + $(KSU_GIT_VERSION) + 200))
   $(info -- KernelSU version: $(KSU_VERSION))
