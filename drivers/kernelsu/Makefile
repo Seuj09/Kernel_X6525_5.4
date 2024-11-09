@@ -23,8 +23,8 @@ REPO_BRANCH := main
 KSU_GIT_VERSION := $(shell curl -sI "https://api.github.com/repos/$(REPO_OWNER)/$(REPO_NAME)/commits?sha=$(REPO_BRANCH)&per_page=1" | grep -i "link:" | sed -n 's/.*page=\([0-9]*\)>; rel="last".*/\1/p')
 
 ifeq ($(KSU_GIT_VERSION),)
-  $(warning "Failed to fetch commit count from GitHub API! Using default version.")
   KSU_VERSION := 11967
+  $(warning "Failed to fetch commit count from GitHub API! Using default version: $(KSU_VERSION)")
 else
   $(eval KSU_VERSION=$(shell expr 10000 + $(KSU_GIT_VERSION) + 200))
   $(info -- KernelSU version: $(KSU_VERSION))
