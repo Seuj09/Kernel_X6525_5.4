@@ -16,19 +16,19 @@ ccflags-y += -I$(objtree)/security/selinux -include $(srctree)/include/uapi/asm-
 
 obj-$(CONFIG_KSU) += kernelsu.o
 
-REPO_OWNER := rifsxd
-REPO_NAME := kernelsu
-REPO_BRANCH := main
+#REPO_OWNER := rifsxd
+#REPO_NAME := kernelsu
+#REPO_BRANCH := main
 
-KSU_GIT_VERSION := $(shell curl -sI "https://api.github.com/repos/$(REPO_OWNER)/$(REPO_NAME)/commits?sha=$(REPO_BRANCH)&per_page=1" | grep -i "link:" | sed -n 's/.*page=\([0-9]*\)>; rel="last".*/\1/p')
+#KSU_GIT_VERSION := $(shell curl -sI "https://api.github.com/repos/$(REPO_OWNER)/$(REPO_NAME)/commits?sha=$(REPO_BRANCH)&per_page=1" | grep -i "link:" | sed -n 's/.*page=\([0-9]*\)>; rel="last".*/\1/p')
 
-ifeq ($(KSU_GIT_VERSION),)
-  KSU_VERSION := 11967
-  $(warning "Failed to fetch commit count from GitHub API! Using default version: $(KSU_VERSION)")
-else
-  $(eval KSU_VERSION=$(shell expr 10000 + $(KSU_GIT_VERSION) + 200))
-  $(info -- KernelSU version: $(KSU_VERSION))
-endif
+#ifeq ($(KSU_GIT_VERSION),)
+KSU_VERSION := 11986
+#  $(warning "Failed to fetch commit count from GitHub API! Using default version: $(KSU_VERSION)")
+#else
+#$(eval KSU_VERSION=$(shell expr 10000 + $(KSU_GIT_VERSION) + 200))
+$(info -- KernelSU version: $(KSU_VERSION))
+#endif
 
 ccflags-y += -DKSU_VERSION=$(KSU_VERSION)
 
