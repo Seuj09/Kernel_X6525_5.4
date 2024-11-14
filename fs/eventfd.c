@@ -182,7 +182,7 @@ static __poll_t eventfd_poll(struct file *file, poll_table *wait)
 }
 
 void eventfd_ctx_do_read(struct eventfd_ctx *ctx, __u64 *cnt)
-{include/linux/eventfd.h
+{
 	lockdep_assert_held(&ctx->wqh.lock);
 
 	*cnt = ((ctx->flags & EFD_SEMAPHORE) && ctx->count) ? 1 : ctx->count;
@@ -445,4 +445,3 @@ SYSCALL_DEFINE1(eventfd, unsigned int, count)
 {
 	return do_eventfd(count, 0);
 }
-

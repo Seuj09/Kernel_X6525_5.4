@@ -660,6 +660,7 @@ static int amd_pinconf_get(struct pinctrl_dev *pctldev,
 
 	default:
 		dev_dbg(&gpio_dev->pdev->dev, "Invalid config param %04x\n",
+			param);
 		return -ENOTSUPP;
 	}
 

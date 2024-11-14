@@ -91,4 +91,3 @@ static inline void eventfd_ctx_do_read(struct eventfd_ctx *ctx, __u64 *cnt)
 #endif
 
 #endif /* _LINUX_EVENTFD_H */
-
